@@ -14,6 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit({required this.isSignInUseCase,required this.signOutUseCase,required this.getCurrentUIDUseCase}) : super(AuthInitial());
 
   Future<void> appStarted()async{
+
     try{
       bool isSignIn=await isSignInUseCase.call();
       print(isSignIn);
@@ -28,6 +29,8 @@ class AuthCubit extends Cubit<AuthState> {
       emit(UnAuthenticated());
     }
   }
+
+  
   Future<void> loggedIn()async{
     try{
        final uid=await getCurrentUIDUseCase.call();
@@ -38,6 +41,8 @@ class AuthCubit extends Cubit<AuthState> {
       emit(UnAuthenticated());
     }
   }
+  
+  
   Future<void> loggedOut()async{
     try{
       await signOutUseCase.call();

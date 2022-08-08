@@ -52,6 +52,8 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: OnGenerateRoute.route,
         routes: {
           "/": (context) {
+
+            
             return BlocBuilder<AuthCubit, AuthState>(
               builder: (context, authState) {
                 if (authState is Authenticated) {
